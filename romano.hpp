@@ -6,7 +6,8 @@ using namespace std;
 int ConverteRomano(string numRoman) {
     int tamanho = numRoman.size();
     int numArab, listaInt[tamanho];
-    for (int i = 0; i < tamanho; i++) {
+    // ListaInt guarda os correspondentes arábicos de cada de cada romano.
+    for (int i = 0; i < tamanho; i++) {  // Preenche listaInt
         switch (numRoman[i]) {
         case 'I':
             listaInt[i] = 1;
@@ -30,7 +31,7 @@ int ConverteRomano(string numRoman) {
             listaInt[i] = 1000;
             break;
         default:
-            break;
+            return -1;
         }
     }
     numArab = listaInt[0];
