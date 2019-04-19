@@ -5,7 +5,7 @@
 using namespace std;
 
 int main() {
-
+  // Converter número digitado.
   int numArab;
   string numRoman;
   cout << "Digite um número em algarismos romanos:" << endl;
