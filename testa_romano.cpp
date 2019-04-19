@@ -31,3 +31,16 @@ TEST_CASE("Teste 4", "Números válidos.") {
     REQUIRE(ConverteRomano("LXXXIX") == 89);
     REQUIRE(ConverteRomano("MMM") == 3000);
 }
+
+TEST_CASE("Teste 5", "Números inválidos.") {
+    REQUIRE(ConverteRomano("IL") == -1);
+    REQUIRE(ConverteRomano("IC") == -1);
+    REQUIRE(ConverteRomano("ID") == -1);
+    REQUIRE(ConverteRomano("IM") == -1);
+    REQUIRE(ConverteRomano("XD") == -1);
+    REQUIRE(ConverteRomano("XM") == -1);
+    REQUIRE(ConverteRomano("IIII") == -1);
+    REQUIRE(ConverteRomano("XXXX") == -1);
+    REQUIRE(ConverteRomano("CCCC") == -1);
+    REQUIRE(ConverteRomano("MMMM") == -1);
+}

@@ -35,6 +35,37 @@ int ConverteRomano(string numRoman) {
             return -1;
         }
     }
+    // Checar números inválidos.
+    for (int i = 0; i < tamanho; i++) {
+        // I ou X seguido de inválido.
+        if (listaInt[i] == 1 || listaInt[i] == 10) {
+            if (listaInt[i+1] == 500 || listaInt[i+1] == 1000)
+                return -1;
+            if (listaInt[i] == 1) {
+                if (listaInt[i+1] == 50 || listaInt[i+1] == 100)
+                    return -1;
+            }
+        }
+        // Mais de 3 I, X, C ou M's seguidos.
+        if (listaInt[i] == 1 || listaInt[i] == 10) {
+           if (listaInt[i] == listaInt[i+1]) {
+                if (listaInt[i] == listaInt[i+2]) {
+                    if (listaInt[i] == listaInt[i+3]) {
+                        return -1;
+                }
+               }
+           }
+        }
+        if (listaInt[i] == 100 || listaInt[i] == 1000) {
+           if (listaInt[i] == listaInt[i+1]) {
+                if (listaInt[i] == listaInt[i+2]) {
+                    if (listaInt[i] == listaInt[i+3]) {
+                        return -1;
+                }
+               }
+           }
+        }
+    }
     // Calcular numArab.
     for (int i = 0; i < tamanho; i++) {
         // verificar se está no último.
