@@ -22,3 +22,12 @@ TEST_CASE("Teste 3", "Entradas inválidas.") {
     REQUIRE(ConverteRomano("@") == -1);
     REQUIRE(ConverteRomano("A") == -1);
 }
+
+TEST_CASE("Teste 4", "Números válidos.") {
+    REQUIRE(ConverteRomano("IV") == 4);
+    REQUIRE(ConverteRomano("XI") == 11);
+    REQUIRE(ConverteRomano("XIX") == 19);
+    REQUIRE(ConverteRomano("CXLIX") == 149);
+    REQUIRE(ConverteRomano("LXXXIX") == 89);
+    REQUIRE(ConverteRomano("MMM") == 3000);
+}

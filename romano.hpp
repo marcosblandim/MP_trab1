@@ -5,9 +5,10 @@ using namespace std;
 
 int ConverteRomano(string numRoman) {
     int tamanho = numRoman.size();
-    int numArab, listaInt[tamanho];
-    // ListaInt guarda os correspondentes arábicos de cada de cada romano.
-    for (int i = 0; i < tamanho; i++) {  // Preenche listaInt
+    // ListaInt guarda os correspondentes arábicos de cada romano.
+    int numArab = 0, listaInt[tamanho];
+    // Preencher lista de arábicos correspondentes.
+    for (int i = 0; i < tamanho; i++) {
         switch (numRoman[i]) {
         case 'I':
             listaInt[i] = 1;
@@ -34,7 +35,34 @@ int ConverteRomano(string numRoman) {
             return -1;
         }
     }
-    numArab = listaInt[0];
+    // Calcular numArab.
+    for (int i = 0; i < tamanho; i++) {
+        // verificar se está no último.
+        if (i == tamanho - 1) {
+            numArab += listaInt[i];
+        } else {
+            if (listaInt[i] > listaInt[i+1]) {  // Próximo menor.
+                if (i == tamanho - 2) {
+                    numArab += listaInt[i] + listaInt[i+1];  // Dois últimos.
+                } else {
+                    if (listaInt[i + 2] > listaInt[i])  // Número inválido.
+                        return -1;
+                    if (listaInt[i + 2] > listaInt[i + 1])  // Menor cercado.
+                        numArab += listaInt[i] + listaInt[i+2] - listaInt[i+1];
+                    // Maior seguido de iguais.
+                    if (listaInt[i + 2] <= listaInt[i + 1])
+                        numArab += listaInt[i] + listaInt[i+2] + listaInt[i+1];
+                }
+                i += 2;
+            } else if (listaInt[i] == listaInt[i+1]) {  // Próximo igual.
+                numArab += 2*listaInt[i];
+                i++;
+            } else if (listaInt[i] < listaInt[i+1]) {  // Próximo menor.
+                numArab += listaInt[i+1] - listaInt[i];
+                i++;
+            }
+        }
+    }
     return numArab;
 }
 #endif
