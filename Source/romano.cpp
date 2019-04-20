@@ -16,5 +16,8 @@ int main() {
   } else {
     cout << "Seu equivalente em algarismos arábicos é: " << numArab << endl;
   }
+  cout << "Digite qualquer tecla para sair." << endl;
+  cin.get();
+  cin.get();
   return 0;
 }
